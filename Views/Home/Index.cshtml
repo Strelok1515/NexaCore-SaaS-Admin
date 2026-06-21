@@ -1,0 +1,55 @@
+﻿@model IEnumerable<AleksandarIvanov_NexaCore.Models.SubscriptionPlan>
+
+@{
+    ViewData["Title"] = "Welcome";
+}
+
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5 text-center">
+        <h1 class="display-5 fw-bold">Welcome to NexaCore </h1>
+        <p class="col-md-8 mx-auto">Manage plans, subscriptions, invoices, and get deep insights—all in one place.</p>
+        @if (User.HasClaim("IsAdmin", "True"))
+        {
+            <a class="btn btn-primary btn-lg px-4"
+               asp-controller="SubscriptionPlan"
+               asp-action="Index">
+                Get Started →
+            </a>
+        }
+        else if (User.Identity?.IsAuthenticated == true)
+        {
+            <a class="btn btn-primary btn-lg px-4"
+               asp-controller="Subscription"
+               asp-action="Index">
+                View My Subscriptions →
+            </a>
+        }
+    </div>
+</div>
+
+<h2 class="mb-4 text-center">Our Subscription Plans</h2>
+
+<div class="row">
+    @foreach (var plan in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">@plan.PlanName</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        @plan.Price.ToString("C") &middot; @plan.Duration days
+                    </h6>
+                    <p class="card-text flex-grow-1">
+                        @plan.Features
+                    </p>
+                    <a asp-controller="Subscription"
+                       asp-action="Create"
+                       asp-route-planId="@plan.PlanId"
+                       class="btn btn-outline-primary mt-auto">
+                        Subscribe
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

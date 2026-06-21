@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35913.81 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AleksandarIvanov_NexaCore", "AleksandarIvanov_NexaCore\AleksandarIvanov_NexaCore.csproj", "{0B9C77E3-17C1-4F65-9E6B-B86E5F6174DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B9C77E3-17C1-4F65-9E6B-B86E5F6174DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B9C77E3-17C1-4F65-9E6B-B86E5F6174DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B9C77E3-17C1-4F65-9E6B-B86E5F6174DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B9C77E3-17C1-4F65-9E6B-B86E5F6174DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {876D8F78-1340-49CD-859D-3E4DFD9DFDEF}
+	EndGlobalSection
+EndGlobal

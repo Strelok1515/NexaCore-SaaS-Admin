@@ -1,0 +1,38 @@
+﻿@model AleksandarIvanov_NexaCore.Models.User
+
+<form asp-action="@ViewData["FormAction"]" method="post">
+    @* If editing, include the user’s ID *@
+    @if ((string)ViewData["FormAction"] == "Edit")
+    {
+        <input type="hidden" asp-for="Id" />
+    }
+
+    <div class="row g-3">
+        <div class="col-md-4">
+            <div class="form-floating">
+                <input asp-for="UserName" class="form-control" placeholder="Username" />
+                <label asp-for="UserName">User Name</label>
+                <span asp-validation-for="UserName" class="text-danger small"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-floating">
+                <input asp-for="Email" class="form-control" placeholder="Email" />
+                <label asp-for="Email">Email</label>
+                <span asp-validation-for="Email" class="text-danger small"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-floating">
+                <input asp-for="Address" class="form-control" placeholder="Address" />
+                <label asp-for="Address">Address</label>
+                <span asp-validation-for="Address" class="text-danger small"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4 text-end">
+        <button type="submit" class="btn btn-primary px-4">Save</button>
+        <button type="button" class="btn btn-secondary ms-2" data-bs-dismiss="modal">Cancel</button>
+    </div>
+</form>

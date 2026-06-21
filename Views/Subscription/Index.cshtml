@@ -1,0 +1,172 @@
+﻿@model IEnumerable<AleksandarIvanov_NexaCore.Models.Subscription>
+@using Microsoft.AspNetCore.Mvc.Rendering
+@{
+    ViewData["Title"] = "Subscriptions";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="mb-0">@ViewData["Title"]</h1>
+    <div id="subControls" class="d-flex align-items-center flex-nowrap gap-2">
+        @if (User.HasClaim("IsAdmin", "True"))
+        {
+            <button type="button"
+                    class="btn btn-success btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#createSubscriptionModal">
+                <i class="bi bi-plus-circle me-1"></i> New Subscription
+            </button>
+        }
+        <div id="searchSubscription"></div>
+    </div>
+</div>
+
+<div class="card shadow-sm mb-4">
+    <div class="table-responsive">
+        <table id="subsTable" class="table table-hover mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Customer</th>
+                    <th>Plan</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th class="text-end">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var s in Model)
+                {
+                    <tr>
+                        <td>@s.SubscriptionId</td>
+                        <td>@s.Customer.User.UserName</td>
+                        <td>@s.SubscriptionPlan.PlanName</td>
+                        <td>@s.StartDate.ToShortDateString()</td>
+                        <td>@s.EndDate.ToShortDateString()</td>
+                        <td class="text-end">
+                            <a asp-action="Details"
+                               asp-route-id="@s.SubscriptionId"
+                               class="btn btn-outline-info btn-sm me-1"
+                               title="View Details"
+                               data-bs-toggle="tooltip">
+                                <i class="bi bi-eye-fill"></i>
+                            </a>
+                            @if (User.HasClaim("IsAdmin", "True"))
+                            {
+                                <button type="button"
+                                        class="btn btn-outline-primary btn-sm me-1"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#editSubscriptionModal-@s.SubscriptionId"
+                                        title="Edit Subscription"
+                                        data-bs-toggle="tooltip">
+                                    <i class="bi bi-pencil-fill"></i>
+                                </button>
+                                <a asp-action="Delete"
+                                   asp-route-id="@s.SubscriptionId"
+                                   class="btn btn-outline-danger btn-sm"
+                                   title="Delete Subscription"
+                                   data-bs-toggle="tooltip">
+                                    <i class="bi bi-trash-fill"></i>
+                                </a>
+                            }
+                        </td>
+                    </tr>
+
+                    @* --- Edit Modal --- *@
+                    <div class="modal fade" id="editSubscriptionModal-@s.SubscriptionId" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Edit Subscription @s.SubscriptionId</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    @{
+                                        ViewData["FormAction"] = "Edit";
+                                    }
+                                    @await Html.PartialAsync("_SubscriptionFormPartial", s)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@* --- Create Modal --- *@
+<div class="modal fade" id="createSubscriptionModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">New Subscription</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                @{
+                    ViewData["FormAction"] = "Create";
+                    var empty = new AleksandarIvanov_NexaCore.Models.Subscription
+            {
+                StartDate = DateTime.Today,
+                EndDate = DateTime.Today
+            };
+                }
+                @await Html.PartialAsync("_SubscriptionFormPartial", empty)
+            </div>
+        </div>
+    </div>
+</div>
+
+@* --- Toast Message (bottom‑center) for Subscriptions ———————— *@
+@if (TempData["ToastMessage"] != null)
+{
+    <div class="position-fixed bottom-0 start-50 translate-middle-x p-3" style="z-index:1200">
+        <div id="subscriptionToast"
+             class="toast align-items-center text-white bg-success border-0"
+             role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    @TempData["ToastMessage"]
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto"
+                        data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <script>
+        $(function(){
+            // DataTable + search box relocation
+            var table = $('#subsTable').DataTable({
+                paging: true,
+                lengthChange: false,
+                searching: true,
+                ordering: true,
+                info: false,
+                autoWidth: false,
+                initComplete: function() {
+                    $('#subsTable_filter')
+                      .appendTo('#searchSubscription')
+                      .find('input')
+                        .removeClass('form-control-sm')
+                        .addClass('form-control form-control-sm')
+                        .attr('placeholder','Search Subscriptions…');
+                    $('#searchSubscription label').contents()
+                      .filter(n=>n.nodeType===3).remove();
+                }
+            });
+
+            // Tooltips
+            document.querySelectorAll('[data-bs-toggle="tooltip"]')
+                    .forEach(el => bootstrap.Tooltip.getOrCreateInstance(el));
+            table.on('draw', () => {
+                document.querySelectorAll('[data-bs-toggle="tooltip"]')
+                        .forEach(el => bootstrap.Tooltip.getOrCreateInstance(el));
+            });
+
+         
+       
+    </script>
+}

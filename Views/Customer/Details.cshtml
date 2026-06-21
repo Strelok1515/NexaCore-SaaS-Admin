@@ -1,0 +1,23 @@
+﻿@model AleksandarIvanov_NexaCore.Models.Customer
+@{
+    ViewData["Title"] = "Customer Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">ID (User)</dt>
+            <dd class="col-sm-9">@Model.Id</dd>
+
+            <dt class="col-sm-3">User Name</dt>
+            <dd class="col-sm-9">@Model.User.UserName</dd>
+
+            <dt class="col-sm-3">Is Active?</dt>
+            <dd class="col-sm-9">@Model.IsActive</dd>
+        </dl>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary">Back</a>
+    </div>
+</div>

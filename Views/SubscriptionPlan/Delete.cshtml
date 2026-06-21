@@ -1,0 +1,33 @@
+﻿@model AleksandarIvanov_NexaCore.Models.SubscriptionPlan
+
+@{
+    ViewData["Title"] = "Delete Plan";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3>Are you sure you want to delete this plan?</h3>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Plan Name</dt>
+            <dd class="col-sm-9">@Model.PlanName</dd>
+
+            <dt class="col-sm-3">Price</dt>
+            <dd class="col-sm-9">@Model.Price.ToString("C")</dd>
+
+            <dt class="col-sm-3">Duration (days)</dt>
+            <dd class="col-sm-9">@Model.Duration</dd>
+
+            <dt class="col-sm-3">Features</dt>
+            <dd class="col-sm-9">@Model.Features</dd>
+        </dl>
+    </div>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="PlanId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

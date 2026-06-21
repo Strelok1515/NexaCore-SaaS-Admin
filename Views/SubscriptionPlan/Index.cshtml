@@ -1,0 +1,147 @@
+﻿@model IEnumerable<AleksandarIvanov_NexaCore.Models.SubscriptionPlan>
+@{
+    ViewData["Title"] = "Subscription Plans";
+}
+
+@* ===== Header with Title on left, Controls (Button + Search) on right ===== *@
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="mb-0">@ViewData["Title"]</h1>
+    <div class="d-flex align-items-center" id="planControls">
+        @if (User.HasClaim("IsAdmin", "True"))
+        {
+            <button type="button"
+                    class="btn btn-success btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#createPlanModal">
+                <i class="bi bi-plus-circle-fill me-1"></i> New Plan
+            </button>
+        }
+        <div id="searchContainer" class="ms-3"></div>
+    </div>
+</div>
+
+@* ===== Table ===== *@
+<div class="card shadow-sm mb-4">
+    <div class="table-responsive">
+        <table id="plansTable" class="table table-hover mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Plan Name</th>
+                    <th>Price</th>
+                    <th>Duration (days)</th>
+                    <th>Features</th>
+                    <th class="text-end">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var plan in Model)
+                {
+                    <tr>
+                        <td>@plan.PlanName</td>
+                        <td>@plan.Price.ToString("C")</td>
+                        <td>@plan.Duration</td>
+                        <td>@plan.Features</td>
+                        <td class="text-end">
+                            <a asp-action="Details" asp-route-id="@plan.PlanId"
+                               class="btn btn-outline-info btn-sm me-1"
+                               title="View Details" data-bs-toggle="tooltip">
+                                <i class="bi bi-info-circle-fill"></i>
+                            </a>
+                            @if (User.HasClaim("IsAdmin", "True"))
+                            {
+                                <button type="button"
+                                        class="btn btn-outline-primary btn-sm me-1"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#editPlanModal-@plan.PlanId"
+                                        title="Edit Plan" data-bs-toggle="tooltip">
+                                    <i class="bi bi-pencil-fill"></i>
+                                </button>
+                                <a asp-action="Delete" asp-route-id="@plan.PlanId"
+                                   class="btn btn-outline-danger btn-sm"
+                                   title="Delete Plan" data-bs-toggle="tooltip">
+                                    <i class="bi bi-trash-fill"></i>
+                                </a>
+                            }
+                        </td>
+                    </tr>
+
+                    @* ===== Edit Modal for each plan ===== *@
+                    <div class="modal fade" id="editPlanModal-@plan.PlanId" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Edit @plan.PlanName</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    @{
+                                        ViewData["FormAction"] = "Edit";
+                                    }
+                                    @await Html.PartialAsync("_PlanFormPartial", plan)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@* ===== Create Modal ===== *@
+<div class="modal fade" id="createPlanModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">New Subscription Plan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                @{
+                    ViewData["FormAction"] = "Create";
+                }
+                @await Html.PartialAsync("_PlanFormPartial", new AleksandarIvanov_NexaCore.Models.SubscriptionPlan())
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+          // Initialize DataTables
+          var table = $('#plansTable').DataTable({
+            paging: true,
+            lengthChange: false,
+            searching: true,
+            ordering: true,
+            info: false,
+            autoWidth: false,
+            initComplete: function() {
+              // Move the search box into our custom container
+              $('#plansTable_filter')
+                .appendTo('#searchContainer')
+                .find('input')
+                  .removeClass('form-control-sm')
+                  .addClass('form-control form-control-sm')
+                  .attr('placeholder', 'Search Plans...');
+              // Remove the "Search:" label text
+              $('#searchContainer label').contents().filter(function() {
+                return this.nodeType === 3;
+              }).remove();
+            }
+          });
+
+          // Initialize tooltips
+          function initTooltips() {
+            document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+              if (!el._tooltip) {
+                el._tooltip = new bootstrap.Tooltip(el);
+              }
+            });
+          }
+          initTooltips();
+          table.on('draw', initTooltips);
+        });
+    </script>
+}

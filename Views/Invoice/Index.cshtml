@@ -1,0 +1,47 @@
+﻿@model IEnumerable<AleksandarIvanov_NexaCore.Models.Invoice>
+@{
+    ViewData["Title"] = "Invoices";
+    var planStats = ViewBag.PlanStats as IEnumerable<dynamic>;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="card shadow-sm mb-4">
+    <table class="table">
+        <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th>Subscription</th>
+                <th class="text-end">Amount</th>
+                <th class="text-end">Discount</th>
+                <th class="text-end">Final Amount</th>
+                <th>Due Date</th>
+                <th>Payment Status</th>
+                <th class="text-end">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var inv in Model)
+            {
+                var days = (inv.Subscription.EndDate - inv.Subscription.StartDate).Days;
+                var multiplier = days > 60 ? 3 : days > 30 ? 2 : 1;
+                var amount = inv.Subscription.SubscriptionPlan.Price * multiplier;
+                var discount = (days > 90 && days <= 365) ? amount * 0.20m : 0;
+                var finalAmount = amount - discount;
+
+                <tr>
+                    <td>@inv.InvoiceId</td>
+                    <td>@inv.Subscription.SubscriptionId – @inv.Subscription.Customer.User.UserName</td>
+                    <td class="text-end">@amount.ToString("C")</td>
+                    <td class="text-end">@((discount > 0) ? discount.ToString("C") : "-")</td>
+                    <td class="text-end">@finalAmount.ToString("C")</td>
+                    <td>@inv.DueDate.ToShortDateString()</td>
+                    <td>@inv.PaymentStatus</td>
+                    <td class="text-end">
+                        <a asp-action="Details" asp-route-id="@inv.InvoiceId" class="btn btn-outline-info btn-sm">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

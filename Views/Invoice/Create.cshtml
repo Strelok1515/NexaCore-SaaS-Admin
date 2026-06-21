@@ -1,0 +1,47 @@
+﻿@model AleksandarIvanov_NexaCore.Models.Invoice
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+@{
+    ViewData["Title"] = "Create Invoice";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="SubscriptionId" class="form-label">Subscription</label>
+        <select asp-for="SubscriptionId"
+                class="form-select"
+                asp-items="@(ViewData["SubscriptionId"] as SelectList)">
+            <option value="">-- Select Subscription --</option>
+        </select>
+        <span asp-validation-for="SubscriptionId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Amount" class="form-label"></label>
+        <input asp-for="Amount" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="Amount" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DueDate" class="form-label"></label>
+        <input asp-for="DueDate" class="form-control" type="date" />
+        <span asp-validation-for="DueDate" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PaymentStatus" class="form-label"></label>
+        <input asp-for="PaymentStatus" class="form-control" />
+        <span asp-validation-for="PaymentStatus" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

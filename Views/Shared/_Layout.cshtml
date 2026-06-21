@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Welcome to NexaCore</title>
+
+    @* Bootswatch Cerulean theme *@
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/cerulean/bootstrap.min.css" />
+    @* Bootstrap Icons *@
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    @* DataTables CSS *@
+    <link rel="stylesheet"
+          href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    NexaCore
+                </a>
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#mainNav"
+                        aria-controls="mainNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                        @* Always visible *@
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+
+                        @* Admin only *@
+                        @if (User.HasClaim("IsAdmin", "True"))
+                        {
+                            <li class="nav-item"><a class="nav-link" asp-controller="User" asp-action="Index">Users</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Customer" asp-action="Index">Customers</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="SubscriptionPlan" asp-action="Index">Plans</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Subscription" asp-action="Index">Subscriptions</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Invoice" asp-action="Index">Invoices</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Reports" asp-action="Index">Reports</a></li>
+
+                        }
+                        
+                        @* Admin only Audit Log *@
+                        @if (User.HasClaim("IsAdmin", "True"))
+                        {
+                            <li class="nav-item"><a class="nav-link" asp-controller="AuditLog" asp-action="Index">Audit Log</a></li>
+                        }
+                    </ul>
+
+                    <ul class="navbar-nav mb-2 mb-sm-0">
+                        <partial name="_LoginPartial" />
+
+                        @* Dark‑mode toggle *@
+                        <li class="nav-item">
+                            <button id="themeToggle"
+                                    class="btn btn-sm btn-outline-secondary ms-2"
+                                    title="Toggle dark mode">
+                                <i id="themeToggleIcon" class="bi bi-moon-stars"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container flex-grow-1">
+        @* Flash on logout *@
+        @if (TempData["LogoutMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                @TempData["LogoutMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        }
+
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="mt-auto border-top py-2 bg-light">
+        <div class="container d-flex justify-content-between align-items-center">
+            <span>&copy; 2025 - NexaCore</span>
+            <a class="text-muted" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+
+        @* Central toast placeholder (above footer) *@
+        <div class="position-fixed start-50 translate-middle-x p-3" style="bottom: 4rem; z-index:1050">
+            <div id="liveToast"
+                 class="toast align-items-center text-bg-primary border-0"
+                 role="alert"
+                 aria-live="assertive"
+                 aria-atomic="true"
+                 data-bs-delay="3000">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        <span id="toastMessage"></span>
+                    </div>
+                    <button type="button"
+                            class="btn-close btn-close-white me-2 m-auto"
+                            data-bs-dismiss="toast"
+                            aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery (required by DataTables) -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <!-- DataTables -->
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script>
+        // Toast helper
+        function showToast(message) {
+            document.getElementById('toastMessage').textContent = message;
+            var toastEl = document.getElementById('liveToast');
+            var toast = bootstrap.Toast.getOrCreateInstance(toastEl);
+            toast.show();
+        }
+
+        // Fire toast if the controller set TempData["ToastMessage"]
+        @if (TempData["ToastMessage"] != null)
+        {
+            <text>
+                document.addEventListener('DOMContentLoaded', function() {
+                    showToast('@TempData["ToastMessage"]');
+                });
+            </text>
+        }
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

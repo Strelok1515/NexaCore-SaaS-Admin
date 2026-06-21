@@ -1,0 +1,47 @@
+﻿@model AleksandarIvanov_NexaCore.Models.Subscription
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+@{
+    ViewData["Title"] = "Edit Subscription";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="SubscriptionId" />
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="CustomerId" class="form-label">Customer</label>
+        <select asp-for="CustomerId" class="form-select" asp-items="@(ViewData["CustomerId"] as SelectList)">
+        </select>
+        <span asp-validation-for="CustomerId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PlanId" class="form-label">Subscription Plan</label>
+        <select asp-for="PlanId" class="form-select" asp-items="@(ViewData["PlanId"] as SelectList)">
+        </select>
+        <span asp-validation-for="PlanId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="StartDate" class="form-label"></label>
+        <input asp-for="StartDate" class="form-control" type="date" />
+        <span asp-validation-for="StartDate" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="EndDate" class="form-label"></label>
+        <input asp-for="EndDate" class="form-control" type="date" />
+        <span asp-validation-for="EndDate" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

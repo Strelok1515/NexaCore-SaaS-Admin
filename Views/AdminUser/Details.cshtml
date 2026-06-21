@@ -1,0 +1,23 @@
+﻿@model AleksandarIvanov_NexaCore.Models.AdminUser
+
+@{
+    ViewData["Title"] = "Admin User Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">AdminUser ID</dt>
+            <dd class="col-sm-9">@Model.AdminUserId</dd>
+
+            <dt class="col-sm-3">User Name</dt>
+            <dd class="col-sm-9">@Model.User.UserName</dd>
+
+            <dt class="col-sm-3">Role</dt>
+            <dd class="col-sm-9">@Model.Role</dd>
+        </dl>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>

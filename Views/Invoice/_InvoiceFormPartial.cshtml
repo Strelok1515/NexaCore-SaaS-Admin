@@ -1,0 +1,61 @@
+﻿@model AleksandarIvanov_NexaCore.Models.Invoice
+
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using Microsoft.EntityFrameworkCore
+@inject AleksandarIvanov_NexaCore.Data.ApplicationDbContext _db
+
+@{
+    var action = (string)ViewData["FormAction"]!;
+    var subs = _db.Subscriptions
+        .Include(s => s.Customer).ThenInclude(c => c.User)
+        .Select(s => new SelectListItem
+                {
+                    Text = $"{s.SubscriptionId} - {s.Customer.User.UserName}",
+                    Value = s.SubscriptionId.ToString()
+                })
+        .ToList();
+}
+
+<form asp-action="@action" method="post">
+    @if (action == "Edit")
+    {
+        <input type="hidden" asp-for="InvoiceId" />
+    }
+
+    <div class="mb-3">
+        <label asp-for="SubscriptionId" class="form-label">Subscription</label>
+        <select asp-for="SubscriptionId"
+                class="form-select"
+                asp-items="subs">
+            <option value="">— Select subscription —</option>
+        </select>
+        <span asp-validation-for="SubscriptionId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Amount" class="form-label">Amount</label>
+        <input asp-for="Amount" class="form-control" />
+        <span asp-validation-for="Amount" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DueDate" class="form-label">Due Date</label>
+        <input asp-for="DueDate" type="date" class="form-control" />
+        <span asp-validation-for="DueDate" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PaymentStatus" class="form-label">Payment Status</label>
+        <input asp-for="PaymentStatus" class="form-control" />
+        <span asp-validation-for="PaymentStatus" class="text-danger"></span>
+    </div>
+
+    <div class="text-end">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary ms-2" data-bs-dismiss="modal">Cancel</button>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

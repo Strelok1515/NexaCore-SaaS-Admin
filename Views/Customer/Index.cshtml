@@ -1,0 +1,171 @@
+﻿@model IEnumerable<AleksandarIvanov_NexaCore.Models.Customer>
+@using Microsoft.AspNetCore.Mvc.Rendering
+@{
+    ViewData["Title"] = "Customers";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="mb-0">@ViewData["Title"]</h1>
+    <div id="customerControls" class="d-flex align-items-center flex-nowrap gap-2">
+        @* New Customer button for admins *@
+        @if (User.HasClaim("IsAdmin", "True"))
+        {
+            <button type="button"
+                    class="btn btn-success btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#createCustomerModal">
+                <i class="bi bi-person-plus-fill me-1"></i> New Customer
+            </button>
+        }
+        @* Search placeholder *@
+        <div id="searchCustomer"></div>
+    </div>
+</div>
+
+<div class="card shadow-sm mb-4">
+    <div class="table-responsive">
+        <table id="customersTable" class="table table-hover mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Customer ID</th>
+                    <th>User Name</th>
+                    <th>Is Active?</th>
+                    <th class="text-end">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var c in Model)
+                {
+                    <tr>
+                        <td>@c.Id</td>
+                        <td>@c.User?.UserName</td>
+                        <td>@(c.IsActive ? "Yes" : "No")</td>
+                        <td class="text-end">
+                            <a asp-action="Details"
+                               asp-route-id="@c.Id"
+                               class="btn btn-outline-info btn-sm me-1"
+                               title="View Details"
+                               data-bs-toggle="tooltip">
+                                <i class="bi bi-eye-fill"></i>
+                            </a>
+                            @if (User.HasClaim("IsAdmin", "True"))
+                            {
+                                <button type="button"
+                                        class="btn btn-outline-primary btn-sm me-1"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#editCustomerModal-@c.Id"
+                                        title="Edit Customer"
+                                        data-bs-toggle="tooltip">
+                                    <i class="bi bi-pencil-fill"></i>
+                                </button>
+                                <a asp-action="Delete"
+                                   asp-route-id="@c.Id"
+                                   class="btn btn-outline-danger btn-sm"
+                                   title="Delete Customer"
+                                   data-bs-toggle="tooltip">
+                                    <i class="bi bi-trash-fill"></i>
+                                </a>
+                            }
+                        </td>
+                    </tr>
+
+                    @* --- Edit Modal --- *@
+                    <div class="modal fade" id="editCustomerModal-@c.Id" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Edit Customer @c.Id</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    @{
+                                        ViewData["FormAction"] = "Edit";
+                                    }
+                                    @await Html.PartialAsync(
+                                             "_CustomerFormPartial",
+                                             c
+                                             )
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@* --- Create Modal --- *@
+<div class="modal fade" id="createCustomerModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">New Customer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                @{
+                    ViewData["FormAction"] = "Create";
+                    var emptyCust = new AleksandarIvanov_NexaCore.Models.Customer();
+                }
+                @await Html.PartialAsync(
+                         "_CustomerFormPartial",
+                         emptyCust
+                         )
+            </div>
+        </div>
+    </div>
+</div>
+
+@* --- Toast Message (bottom‑center) --- *@
+@if (TempData["ToastMessage"] != null)
+{
+    <div class="position-fixed bottom-0 start-50 translate-middle-x p-3" style="z-index:1200">
+        <div id="customerToast"
+             class="toast align-items-center text-white bg-success border-0"
+             role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    @TempData["ToastMessage"]
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto"
+                        data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <script>
+        $(function(){
+            // Initialize DataTable
+            var table = $('#customersTable').DataTable({
+                paging: true, lengthChange: false,
+                searching: true, ordering: true,
+                info: false, autoWidth: false,
+                initComplete: function() {
+                    // Move search input into our placeholder
+                    $('#customersTable_filter')
+                      .appendTo('#searchCustomer')
+                      .find('input')
+                        .removeClass('form-control-sm')
+                        .addClass('form-control form-control-sm')
+                        .attr('placeholder','Search Customers…');
+                    // Remove the default label text
+                    $('#searchCustomer label').contents()
+                      .filter(n => n.nodeType===3).remove();
+                }
+            });
+
+            // Tooltips
+            function initTooltips(){
+                document.querySelectorAll('[data-bs-toggle="tooltip"]')
+                    .forEach(el => bootstrap.Tooltip.getOrCreateInstance(el));
+            }
+            initTooltips();
+            table.on('draw', initTooltips);
+
+           
+        });
+    </script>
+}

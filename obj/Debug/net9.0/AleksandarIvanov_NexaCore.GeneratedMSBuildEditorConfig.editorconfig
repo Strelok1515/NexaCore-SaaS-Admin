@@ -1,0 +1,237 @@
+is_global = true
+build_property.TargetFramework = net9.0
+build_property.TargetFramework = net9.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = AleksandarIvanov_NexaCore
+build_property.RootNamespace = AleksandarIvanov_NexaCore
+build_property.ProjectDir = C:\Users\ace_i\source\repos\AleksandarIvanov_NexaCore\AleksandarIvanov_NexaCore\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\ace_i\source\repos\AleksandarIvanov_NexaCore\AleksandarIvanov_NexaCore
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Areas/Identity/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Areas/Identity/Pages/Account/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Areas/Identity/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Areas/Identity/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/AdminUser/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5Vc2VyXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/AdminUser/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5Vc2VyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/AuditLog/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVkaXRMb2dcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/AuditLog/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVkaXRMb2dcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Customer/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Customer/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Customer/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Customer/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Customer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Customer/ViewBag.UserList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcVmlld0JhZy5Vc2VyTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Customer/_CustomerFormPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcX0N1c3RvbWVyRm9ybVBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Invoice/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52b2ljZVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Invoice/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52b2ljZVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Invoice/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52b2ljZVxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Invoice/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52b2ljZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Invoice/_InvoiceFormPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52b2ljZVxfSW52b2ljZUZvcm1QYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Reports/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Reports/PlanSubscriptions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0c1xQbGFuU3Vic2NyaXB0aW9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Shared/_AdminSidebar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pblNpZGViYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/SubscriptionPlan/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic2NyaXB0aW9uUGxhblxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/SubscriptionPlan/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic2NyaXB0aW9uUGxhblxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/SubscriptionPlan/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic2NyaXB0aW9uUGxhblxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/SubscriptionPlan/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic2NyaXB0aW9uUGxhblxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/SubscriptionPlan/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic2NyaXB0aW9uUGxhblxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/SubscriptionPlan/_PlanFormPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic2NyaXB0aW9uUGxhblxfUGxhbkZvcm1QYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Subscription/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic2NyaXB0aW9uXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Subscription/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic2NyaXB0aW9uXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Subscription/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic2NyaXB0aW9uXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Subscription/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic2NyaXB0aW9uXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Subscription/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic2NyaXB0aW9uXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Subscription/_SubscriptionFormPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic2NyaXB0aW9uXF9TdWJzY3JpcHRpb25Gb3JtUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/User/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/User/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/User/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/User/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/User/_UserFormPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxfVXNlckZvcm1QYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ace_i/source/repos/AleksandarIvanov_NexaCore/AleksandarIvanov_NexaCore/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-madexr8sc9

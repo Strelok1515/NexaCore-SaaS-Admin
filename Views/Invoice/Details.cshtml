@@ -1,0 +1,33 @@
+﻿@model AleksandarIvanov_NexaCore.Models.Invoice
+
+@{
+    ViewData["Title"] = "Invoice Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Invoice ID</dt>
+            <dd class="col-sm-9">@Model.InvoiceId</dd>
+
+            <dt class="col-sm-3">Subscription</dt>
+            <dd class="col-sm-9">@Model.Subscription.SubscriptionId</dd>
+
+            <dt class="col-sm-3">Customer</dt>
+            <dd class="col-sm-9">@Model.Subscription.Customer.User.UserName</dd>
+
+            <dt class="col-sm-3">Amount</dt>
+            <dd class="col-sm-9">@Model.Amount.ToString("C")</dd>
+
+            <dt class="col-sm-3">Due Date</dt>
+            <dd class="col-sm-9">@Model.DueDate.ToShortDateString()</dd>
+
+            <dt class="col-sm-3">Payment Status</dt>
+            <dd class="col-sm-9">@Model.PaymentStatus</dd>
+        </dl>
+        
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>

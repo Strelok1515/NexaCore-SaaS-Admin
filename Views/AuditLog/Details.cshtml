@@ -1,0 +1,28 @@
+﻿@model AleksandarIvanov_NexaCore.Models.AuditLog
+@{
+    ViewData["Title"] = "Audit Log Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Log ID</dt>
+            <dd class="col-sm-9">@Model.LogId</dd>
+
+            <dt class="col-sm-3">Admin User</dt>
+            <dd class="col-sm-9">@Model.AdminUser.User.UserName</dd>
+
+            <dt class="col-sm-3">Action</dt>
+            <dd class="col-sm-9">@Model.Action</dd>
+
+            <dt class="col-sm-3">Description</dt>
+            <dd class="col-sm-9">@Model.Description</dd>
+
+            <dt class="col-sm-3">Timestamp</dt>
+            <dd class="col-sm-9">@Model.Timestamp.ToString("f")</dd>
+        </dl>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>

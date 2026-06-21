@@ -1,0 +1,30 @@
+﻿@model AleksandarIvanov_NexaCore.Models.User
+
+@{
+    ViewData["Title"] = "User Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">User ID</dt>
+            <dd class="col-sm-9">@Model.Id</dd>
+
+            <dt class="col-sm-3">User Name</dt>
+            <dd class="col-sm-9">@Model.UserName</dd>
+
+            <dt class="col-sm-3">Email</dt>
+            <dd class="col-sm-9">@Model.Email</dd>
+
+            <dt class="col-sm-3">Address</dt>
+            <dd class="col-sm-9">@Model.Address</dd>
+
+            <dt class="col-sm-3">Admin?</dt>
+            <dd class="col-sm-9">@Model.IsAdmin</dd>
+        </dl>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>

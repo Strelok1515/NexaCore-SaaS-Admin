@@ -1,0 +1,52 @@
+﻿@model AleksandarIvanov_NexaCore.Models.PlanSubscriptionsViewModel
+
+@{
+    ViewData["Title"] = $"{Model.PlanName} Subscriptions";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <strong>Plan:</strong> @Model.PlanName
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-light">
+        <tr>
+            <th>Customer</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Days</th>
+            <th class="text-end">Amount</th>
+            <th class="text-end">Discount</th>
+            <th class="text-end">Final</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var d in Model.Details)
+        {
+            <tr>
+                <td>@d.CustomerName</td>
+                <td>@d.StartDate.ToShortDateString()</td>
+                <td>@d.EndDate.ToShortDateString()</td>
+                <td>@d.Days</td>
+                <td class="text-end">
+                    @((d.BaseAmount * d.Multiplier).ToString("C"))
+                </td>
+                <td class="text-end">
+                    @if (d.DiscountApplied)
+                    {
+                        @(d.DiscountAmount.ToString("C"))
+                    }
+                    else
+                    {
+                        <text>-</text>
+                    }
+                </td>
+                <td class="text-end">
+                    @(d.FinalAmount.ToString("C"))
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

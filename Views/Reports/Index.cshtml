@@ -1,0 +1,109 @@
+﻿@model AleksandarIvanov_NexaCore.Models.ReportsViewModel
+@{
+    ViewData["Title"] = "Platform Analytics";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card text-white bg-primary">
+            <div class="card-header">Plans</div>
+            <div class="card-body">
+                <h2 class="card-title">@Model.TotalPlans</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-success">
+            <div class="card-header">Customers</div>
+            <div class="card-body">
+                <h2 class="card-title">@Model.TotalCustomers</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-info">
+            <div class="card-header">Subscriptions</div>
+            <div class="card-body">
+                <h2 class="card-title">@Model.TotalSubscriptions</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-warning">
+            <div class="card-header">Revenue</div>
+            <div class="card-body">
+                <h2 class="card-title">@Model.TotalRevenue.ToString("C")</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3>Revenue by Plan</h3>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <canvas id="revenueChart" width="400" height="200"></canvas>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Plan Name</th>
+            <th>Revenue</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pr in Model.RevenueByPlan)
+        {
+            <tr>
+                <td>
+                    <a asp-controller="SubscriptionPlan"
+                       asp-action="Details"
+                       asp-route-id="@pr.PlanId">
+                        @pr.PlanName
+                    </a>
+                </td>
+                <td>@pr.Revenue.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const labels = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(
+            Model.RevenueByPlan.Select(r => r.PlanName)
+        ));
+            const data   = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(
+            Model.RevenueByPlan.Select(r => r.Revenue)
+        ));
+
+            const ctx = document.getElementById('revenueChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Revenue by Plan',
+                        data: data,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { callback: v => '$' + v }
+                        }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        });
+    </script>
+}
